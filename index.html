@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NHJTOP – Career Risk Dashboard</title>
+  <meta name="description" content="NHJTOP is an offline iOS app that compares career and investment scenarios with risk-adjusted metrics, Monte Carlo simulations, and clear insights." />
+  <style>
+    :root {
+      --primary: #6B4A1F;
+      --background: #FFF8EC;
+      --page: #F7E7CE;
+      --text: #3B2A12;
+      --text-muted: #8C6E3F;
+      --accent: #B8860B;
+      --accent-light: #D4A857;
+      --surface: #FCF3DE;
+      --separator: #D9C48A;
+      --danger: #A8483B;
+      --max-width: 960px;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+      background: var(--page);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 24px 20px 56px;
+    }
+    header.hero {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      color: #FFF8EC;
+      border-radius: 18px;
+      padding: 36px 28px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+      margin-bottom: 28px;
+    }
+    header.hero .badge {
+      display: inline-block;
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: rgba(255, 248, 236, 0.15);
+      color: #FFF8EC;
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+    header.hero h1 {
+      margin: 0 0 10px;
+      font-size: 32px;
+      line-height: 1.2;
+      font-weight: 700;
+      color: #FFF8EC;
+    }
+    header.hero p {
+      margin: 0;
+      font-size: 16px;
+      max-width: 640px;
+      color: rgba(255, 248, 236, 0.92);
+    }
+    nav.toc {
+      background: var(--background);
+      border: 1px solid var(--separator);
+      border-radius: 14px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+    }
+    nav.toc h2 {
+      margin: 0 0 8px;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    nav.toc ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+    }
+    nav.toc a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    nav.toc a:hover { text-decoration: underline; }
+    section {
+      background: var(--background);
+      border: 1px solid var(--separator);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+    section h2 {
+      margin: 0 0 12px;
+      font-size: 22px;
+      color: var(--primary);
+    }
+    section h3 {
+      margin: 18px 0 8px;
+      font-size: 17px;
+      color: var(--primary);
+    }
+    section p { margin: 0 0 12px; }
+    section ul { margin: 0 0 8px; padding-left: 20px; }
+    section li { margin-bottom: 6px; }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--separator);
+      border-radius: 12px;
+      padding: 16px;
+    }
+    .feature-card h3 {
+      margin: 0 0 6px;
+      font-size: 16px;
+      color: var(--primary);
+    }
+    .feature-card p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    .swatches {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+    .swatch {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .swatch span.dot {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      display: inline-block;
+    }
+    code, kbd {
+      background: var(--surface);
+      border: 1px solid var(--separator);
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-family: "SF Mono", Menlo, Consolas, monospace;
+      font-size: 13px;
+      color: var(--primary);
+    }
+    .footer {
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px solid var(--separator);
+      font-size: 13px;
+      color: var(--text-muted);
+      text-align: center;
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
+    .pill {
+      display: inline-block;
+      background: var(--surface);
+      color: var(--primary);
+      border: 1px solid var(--separator);
+      border-radius: 999px;
+      padding: 2px 10px;
+      font-size: 12px;
+      margin-right: 6px;
+    }
+    @media (max-width: 600px) {
+      header.hero { padding: 28px 20px; }
+      header.hero h1 { font-size: 26px; }
+      section { padding: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <header class="hero">
+      <span class="badge">NHJTOP · iOS App</span>
+      <h1>Career Risk Dashboard</h1>
+      <p>Compare career paths and investment scenarios with risk-adjusted metrics, Monte Carlo simulations, and clear, plain-English insights — all running entirely offline on your device.</p>
+    </header>
+
+    <nav class="toc" aria-label="On this page">
+      <h2>On this page</h2>
+      <ul>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#screens">Screens</a></li>
+        <li><a href="#design">Design</a></li>
+        <li><a href="#privacy">Privacy</a></li>
+        <li><a href="#compliance">Compliance</a></li>
+        <li><a href="#support">Support</a></li>
+      </ul>
+    </nav>
+
+    <section id="overview">
+      <h2>Overview</h2>
+      <p>NHJTOP helps you weigh life-changing decisions — switching jobs, taking a high-upside offer, or sticking with a stable path — by turning stories into numbers.</p>
+      <p>Model a <strong>Stable Path</strong> and a <strong>High Upside</strong> scenario side-by-side, then see expected earnings, volatility, job-loss probability, and burnout risk combined into a single <em>risk-adjusted score</em>.</p>
+      <p>
+        <span class="pill">Offline-only</span>
+        <span class="pill">No accounts</span>
+        <span class="pill">No tracking</span>
+        <span class="pill">No third-party SDKs</span>
+      </p>
+    </section>
+
+    <section id="features">
+      <h2>Features</h2>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>Risk-Adjusted Scoring</h3>
+          <p>Stability × Security × Growth × Wellbeing — one number that captures what spreadsheets miss.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Expected Earnings Curves</h3>
+          <p>See year-by-year projections for any scenario over a 1–30 year horizon.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Volatility Lab</h3>
+          <p>Monte Carlo paths and outcome histograms powered by on-device simulations.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Insights Engine</h3>
+          <p>Plain-English summaries, comparisons, and a personalised action plan.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Custom Scenarios</h3>
+          <p>Save and edit scenarios locally. Compare any two in the Dashboard.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Time &amp; Energy Allocation</h3>
+          <p>A pie chart view of how each scenario spends your time and energy.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Optional Cover Photo</h3>
+          <p>Pick or capture a cover image — stored locally on your device only.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Customisable Insights</h3>
+          <p>Favourites, expand states, swipe actions, and reset controls.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="screens">
+      <h2>Screens</h2>
+      <ul>
+        <li><strong>Dashboard</strong> — Comparative risk-adjusted bar chart and time/energy pie chart.</li>
+        <li><strong>Risk Calculator</strong> — Inputs for base salary, growth, volatility, job-loss probability, severance, and burnout risk; save scenarios locally.</li>
+        <li><strong>Volatility Lab</strong> — Monte Carlo path line chart with interactive sliders and an outcome histogram.</li>
+        <li><strong>Insights</strong> — Analysis table with clear, novel framing and a tailored action plan.</li>
+        <li><strong>Saved Scenarios</strong> — Quick access to every scenario you have created, with swipe actions.</li>
+        <li><strong>Settings</strong> — Privacy &amp; disclaimer, preferences, optional cover photo, and reset controls.</li>
+      </ul>
+    </section>
+
+    <section id="design">
+      <h2>Design</h2>
+      <p>NHJTOP uses a calm, high-contrast champagne gold palette designed to feel warm without sacrificing readability. All charts are drawn with <code>Core Graphics</code> — no third-party charting libraries are bundled.</p>
+      <div class="swatches" aria-label="Theme colours">
+        <div class="swatch"><span class="dot" style="background:#6B4A1F"></span>Primary #6B4A1F</div>
+        <div class="swatch"><span class="dot" style="background:#B8860B"></span>Accent #B8860B</div>
+        <div class="swatch"><span class="dot" style="background:#FFF8EC"></span>Background #FFF8EC</div>
+        <div class="swatch"><span class="dot" style="background:#F7E7CE"></span>Page #F7E7CE</div>
+        <div class="swatch"><span class="dot" style="background:#A8483B"></span>Danger #A8483B</div>
+      </div>
+    </section>
+
+    <section id="privacy">
+      <h2>Privacy</h2>
+      <p>NHJTOP does not collect, transmit, or share any personal data. There is no account, no login, no analytics SDK, no advertising identifier, and no third-party data processor. Saved scenarios, preferences, and an optional cover photo are stored locally inside the iOS sandbox.</p>
+      <p>Read the full <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms of Use</a>.</p>
+    </section>
+
+    <section id="compliance">
+      <h2>Compliance</h2>
+      <ul>
+        <li>Offline-only — the app makes no outbound network requests.</li>
+        <li>No third-party chart libraries — all visualisations use <code>Core Graphics</code>.</li>
+        <li>Disclaimer and privacy statements are surfaced in-app on first use and in <strong>Settings → Privacy &amp; Disclaimer</strong>.</li>
+        <li>High-contrast colours, scalable text, and Dynamic Type support for accessibility.</li>
+      </ul>
+    </section>
+
+    <section id="support">
+      <h2>Support</h2>
+      <p>For questions, feedback, or accessibility issues, please get in touch via the App Store review page for NHJTOP, or email us at <a href="mailto:dahonhduy86@icloud.com">dahonhduy86@icloud.com</a>.</p>
+      <p>See <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Use</a></p>
+    </section>
+
+    <p class="footer">
+      © NHJTOP. All rights reserved.<br />
+      <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Use</a>
+    </p>
+
+  </div>
+</body>
+</html>

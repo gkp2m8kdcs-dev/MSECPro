@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy Policy – NHJTOP</title>
+  <meta name="description" content="Privacy Policy for NHJTOP, an offline iOS career risk dashboard." />
+  <style>
+    :root {
+      --primary: #6B4A1F;
+      --background: #FFF8EC;
+      --page: #F7E7CE;
+      --text: #3B2A12;
+      --text-muted: #8C6E3F;
+      --accent: #B8860B;
+      --accent-light: #D4A857;
+      --surface: #FCF3DE;
+      --separator: #D9C48A;
+      --danger: #A8483B;
+      --max-width: 820px;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+      background: var(--page);
+      color: var(--text);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 24px 20px 56px;
+    }
+    header.page {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      color: #FFF8EC;
+      border-radius: 18px;
+      padding: 32px 28px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+      margin-bottom: 24px;
+    }
+    header.page h1 {
+      margin: 0 0 6px;
+      font-size: 28px;
+      color: #FFF8EC;
+    }
+    header.page p {
+      margin: 0;
+      font-size: 15px;
+      color: rgba(255, 248, 236, 0.92);
+    }
+    .meta {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin: 0 0 18px;
+    }
+    section {
+      background: var(--background);
+      border: 1px solid var(--separator);
+      border-radius: 16px;
+      padding: 22px 24px;
+      margin-bottom: 18px;
+    }
+    section h2 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      color: var(--primary);
+    }
+    section h3 {
+      margin: 16px 0 6px;
+      font-size: 16px;
+      color: var(--primary);
+    }
+    section p { margin: 0 0 10px; }
+    section ul { margin: 0 0 6px; padding-left: 20px; }
+    section li { margin-bottom: 6px; }
+    .summary {
+      background: var(--surface);
+      border-left: 4px solid var(--accent);
+      border-radius: 8px;
+      padding: 14px 16px;
+      font-size: 15px;
+      color: var(--primary);
+    }
+    .footer {
+      margin-top: 28px;
+      padding-top: 18px;
+      border-top: 1px solid var(--separator);
+      font-size: 13px;
+      color: var(--text-muted);
+      text-align: center;
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
+    @media (max-width: 600px) {
+      header.page { padding: 24px 20px; }
+      header.page h1 { font-size: 24px; }
+      section { padding: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <header class="page">
+      <h1>Privacy Policy</h1>
+      <p>NHJTOP — Career Risk Dashboard for iOS</p>
+    </header>
+
+    <p class="meta">Effective date: 2026-07-18 · Offline by design · No accounts · No tracking</p>
+
+    <section>
+      <h2>Summary</h2>
+      <div class="summary">
+        NHJTOP does not collect, transmit, or share any personal data. The scenarios you save and the cover photo you pick stay on your device. Nothing is uploaded, and nothing is shared with anyone.
+      </div>
+    </section>
+
+    <section>
+      <h2>1. Data Collection</h2>
+      <p>This app does not collect, transmit, or share any personal data. There is no account, login, analytics SDK, tracking pixel, advertising identifier, or third-party data processor integrated into the app.</p>
+    </section>
+
+    <section>
+      <h2>2. On-Device Storage</h2>
+      <p>All saved scenarios, user preferences, and an optional cover photo are stored locally on your device inside the iOS app sandbox (via <code>UserDefaults</code> and the app's documents directory). Nothing is uploaded to a server, and no data leaves your device under any circumstance.</p>
+    </section>
+
+    <section>
+      <h2>3. Photos &amp; Camera</h2>
+      <p>The Photos and Camera features are entirely optional. They are only used to let you pick or capture a custom cover image for the dashboard, which is then saved locally to the app's sandbox. The app does not access your photo library beyond the single image you select, and the image is never transmitted off-device.</p>
+      <p>The system permission strings used by the app are:</p>
+      <ul>
+        <li><code>NSPhotoLibraryUsageDescription</code> — "Select a cover photo for your dashboard. Photos stay on-device and are not uploaded."</li>
+        <li><code>NSCameraUsageDescription</code> — "Take a photo to use as a cover image in the app. Photos stay on-device and are not uploaded."</li>
+        <li><code>NSPhotoLibraryAddUsageDescription</code> — "Save exported charts and screenshots to your Photos library."</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>4. Network Access</h2>
+      <p>The app works fully offline. No outbound network requests are made for analytics, telemetry, crash reporting, content delivery, or any other purpose. <code>NSAllowsArbitraryLoads</code> is set to <code>false</code> in <code>Info.plist</code>.</p>
+    </section>
+
+    <section>
+      <h2>5. Your Controls</h2>
+      <p>You can remove saved scenarios, reset insights favourites and expand states, or remove the cover photo at any time from <strong>Settings</strong>. Uninstalling the app deletes all locally stored data.</p>
+    </section>
+
+    <section>
+      <h2>6. Children's Privacy</h2>
+      <p>NHJTOP is intended for general audiences and does not knowingly collect any information from anyone, including children under 13.</p>
+    </section>
+
+    <section>
+      <h2>7. Changes to This Policy</h2>
+      <p>If this Privacy Policy is updated, the revised version will be posted at this URL and the "Effective date" above will be refreshed. Because the app does not network-connect, no in-app notification of changes is possible — please revisit this page periodically.</p>
+    </section>
+
+    <section>
+      <h2>8. Disclaimer (mirrored from the app)</h2>
+      <h3>Not Financial Advice</h3>
+      <p>The calculations, projections, and visualisations provided by this app are for educational and illustrative purposes only. They are not financial, investment, tax, or legal advice and should not be relied upon to make investment, career, or financial decisions.</p>
+      <h3>Not Career Advice</h3>
+      <p>Career comparisons and salary scenarios shown in the app are estimates based on simplified models and user-provided inputs. They are not a substitute for professional career counselling or labour-market research.</p>
+      <h3>Illustrative Outputs</h3>
+      <p>Monte Carlo simulations and other numerical outputs are based on assumptions and statistical models that may not reflect real-world outcomes. Actual results can vary significantly.</p>
+      <h3>No Warranty</h3>
+      <p>The app is provided "as is" and "as available" without warranties of any kind, express or implied. The developer makes no guarantees regarding accuracy, completeness, or fitness for a particular purpose.</p>
+      <h3>Limitation of Liability</h3>
+      <p>To the maximum extent permitted by law, the developer shall not be liable for any damages arising from the use of, or inability to use, this app or its content.</p>
+    </section>
+
+    <section>
+      <h2>9. Contact</h2>
+      <p>For any privacy-related questions, please reach out via the App Store listing for NHJTOP or email <a href="mailto:dahonhduy86@icloud.com">dahonhduy86@icloud.com</a>.</p>
+    </section>
+
+    <p class="footer">
+      © NHJTOP. All rights reserved.<br />
+      <a href="index.html">Home</a> · <a href="terms.html">Terms of Use</a>
+    </p>
+
+  </div>
+</body>
+</html>
